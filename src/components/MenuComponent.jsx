@@ -19,7 +19,11 @@ export class MenuComponent extends Component {
     this.props.getCustomMessages(customData);
     this.props.getDeletedMessages(deletedData);
   }
-
+  /**
+   * This method is used to handle onclick of menu items like Inbox,Spam etc.
+   * @param {*} e 
+   * @param {*} param1 
+   */
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name });
     if (name === INBOX) {
@@ -32,12 +36,17 @@ export class MenuComponent extends Component {
       this.props.getDeletedMessages(this.props.deletedData);
     }
   }
-
+  /**
+   * This method is used to get toggled value of flag.
+   */
   handleFlagChange = () => {
     this.setState({ isFlagChecked: !this.state.isFlagChecked });
     this.props.getInboxFlaggedMessages(this.props.inboxData, this.state.isFlagChecked);
   }
-
+  /**
+   * This method is used to calculate unread message count
+   * @param {*} messageList 
+   */
   getUnreadMessageCount(messageList) {
     const unreadList = messageList.filter(message => message.unread);
     return unreadList.length > 0 ? unreadList.length : '';
@@ -60,7 +69,7 @@ export class MenuComponent extends Component {
                 <Menu.Item name={INBOX}
                   active={activeItem === INBOX}
                   onClick={this.handleItemClick}>
-                  <Label color='teal'>{inboxData ? this.getUnreadMessageCount(inboxData) : ''}</Label>
+                  <Label>{inboxData ? this.getUnreadMessageCount(inboxData) : ''}</Label>
                   {INBOX}
                 </Menu.Item>
 
@@ -74,7 +83,7 @@ export class MenuComponent extends Component {
                 <Menu.Item name={DELETED_ITEMS}
                   active={activeItem === DELETED_ITEMS}
                   onClick={this.handleItemClick}>
-                  <Label color='red'>{deletedData ? this.getUnreadMessageCount(deletedData) : ''}</Label>
+                  <Label>{deletedData ? this.getUnreadMessageCount(deletedData) : ''}</Label>
                   {DELETED_ITEMS}
                 </Menu.Item>
 

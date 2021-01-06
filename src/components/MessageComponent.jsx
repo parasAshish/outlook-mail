@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Grid, List, Icon } from 'semantic-ui-react';
 import { updateMessage, deleteMessage } from '../actions';
 import { DELETED_ITEMS, FLAG_MESSAGE, UNREAD_MESSAGE } from '../constants/AppConstants';
+import './css/messageComponent.css';
 
 export class MessageComponent extends Component {
 
@@ -11,12 +12,21 @@ export class MessageComponent extends Component {
     this.state = { selectedMessage: undefined };
   }
 
+  /**
+   * This method is used to handle click event of message list item.
+   * @param {*} e 
+   * @param {*} selectedMessage 
+   */
   handleItemClick = (e, selectedMessage) => {
     e.stopPropagation();
     this.setState({ selectedMessage });
     this.props.updateMessage(selectedMessage.mId, this.props.wholeData, this.props.activeItem, UNREAD_MESSAGE);
   }
-
+  /**
+   * This method is used to delete indivisual message.
+   * @param {*} e 
+   * @param {*} selectedMessage 
+   */
   deleteMessage = (e, selectedMessage) => {
     e.stopPropagation();
     if (this.props.activeItem !== DELETED_ITEMS) {
@@ -24,7 +34,11 @@ export class MessageComponent extends Component {
       this.setState({ selectedMessage: undefined });
     }
   }
-
+  /**
+   * This method is used to set indivisual flag.
+   * @param {*} e 
+   * @param {*} selectedMessage 
+   */
   flagMessage = (e, selectedMessage) => {
     e.stopPropagation();
     this.props.updateMessage(selectedMessage.mId, this.props.wholeData, this.props.activeItem, FLAG_MESSAGE);
@@ -41,8 +55,7 @@ export class MessageComponent extends Component {
             {dataObject.isFlag ? <Icon className='flag delete-icon' onClick={(e) => this.flagMessage(e, dataObject)}></Icon> :
               <Icon className='flag outline delete-icon' onClick={(e) => this.flagMessage(e, dataObject)}></Icon>}
             <List.Header as='a' className='list-header'>{dataObject.subject}</List.Header>
-            <div className='text-single-line'>
-              {dataObject.content}
+            <div className='text-single-line' dangerouslySetInnerHTML={{ __html: `${dataObject.content}` }}>
             </div>
           </List.Content>
         </List.Item>
@@ -63,9 +76,7 @@ export class MessageComponent extends Component {
                     <div className='selected-message-title'>
                       <List.Header as='a' className='list-header'>{selectedMessage.subject}</List.Header>
                     </div>
-                    <div className='selected-message'>
-                      {selectedMessage.content}
-                    </div>
+                    <div className='selected-message' dangerouslySetInnerHTML={{ __html: `${selectedMessage.content}` }}></div>
                   </List.Content>
                 </List.Item>
               </div>}

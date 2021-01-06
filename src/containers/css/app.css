@@ -1,0 +1,13 @@
+.app-name {
+  padding: 1em;
+  color: white;
+}
+
+.app-header {
+ 	top: 0;
+ 	left: 0;
+ 	height: 4rem;
+ 	overflow: hidden; /* Disables scrollbars on the header frame. To enable scrollbars, change "hidden" to "scroll" */
+  background: #000000;
+  margin: 0 !important;
+}

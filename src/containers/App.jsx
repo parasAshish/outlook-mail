@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Header } from 'semantic-ui-react'
-import './app.css';
+import './css/app.css';
 import { MenuComponent } from '../components/MenuComponent.jsx'
 
 export class App extends Component {
