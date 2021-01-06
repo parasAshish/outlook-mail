@@ -1,0 +1,97 @@
+body {
+    background-color: #fefefe;
+    overflow-y: hidden;
+}
+
+.app-name {
+  padding: 1em;
+  color: white;
+}
+
+.app-header {
+ 	top: 0;
+ 	left: 0;
+ 	height: 4rem;
+ 	overflow: hidden; /* Disables scrollbars on the header frame. To enable scrollbars, change "hidden" to "scroll" */
+   background: #000000;
+   margin: 0 !important;
+}
+
+.ui.vertical.menu {
+  width: 100% !important;
+  height: 100vh;
+}
+
+.ui.celled.grid {
+  margin: 0 !important;
+  height: 100vh !important;
+}
+
+.text-single-line {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0 0 0.5em 0;
+}
+
+.list-header {
+  margin: 0.3em 0 !important;
+}
+
+.verticalLine {
+  border-left: 3px solid #1e70bf;
+  border-radius: 1px !important;
+}
+
+.list-content {
+  margin: 0 1em;
+}
+
+.list-divider {
+  border-bottom: 1px solid #dedede;
+  border-radius: 1px !important;
+}
+
+.ui.grid>.row>.column {
+  padding: 0 !important;
+}
+
+.ui.vertical.menu {
+  background: #fafafa !important;
+}
+
+.search-input {
+  padding: 1em 0.5em;
+  width: 18.5em;
+}
+
+.search-widget {
+  background: #C6DEFF;
+  height: 3em;
+}
+
+.empty-message {
+    position: absolute;
+    top: 45%;
+    right: 40%;
+}
+
+.selected-message {
+  margin: 2em 0;
+}
+
+.selected-message-title {
+  margin: 1em 0 1em 0 !important;
+}
+
+.delete-icon {
+  font-size: 12px;
+  float: right;
+}
+
+.ui.vertical.menu .item>.label {
+  background: transparent !important;
+  color: #1e70bf !important;
+  font-weight: bold;
+  font-size: 14px;
+}

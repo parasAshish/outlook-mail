@@ -1,0 +1,14 @@
+[
+	{
+		"mId": "guid-6",
+		"unread": true,
+		"subject" : "Test Drive",
+		"content" : "Book your appointment today!"
+	},
+	{
+		"mId": "guid-7",
+		"unread": false,
+		"subject" : "ITR Filling",
+		"content" : "Last date of ITR filling is extened. Pay your tax wisely!"
+	}
+]
