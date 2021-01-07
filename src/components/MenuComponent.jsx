@@ -41,7 +41,7 @@ export class MenuComponent extends Component {
    */
   handleFlagChange = () => {
     this.setState({ isFlagChecked: !this.state.isFlagChecked });
-    this.props.getInboxFlaggedMessages(this.props.inboxData, this.state.isFlagChecked);
+    this.props.getInboxFlaggedMessages(this.props.inboxData, this.props.inboxFlaggedData, this.state.isFlagChecked);
   }
   /**
    * This method is used to calculate unread message count
@@ -125,7 +125,9 @@ const mapStateToProps = (state) => ({
   inboxData: state.inboxData,
   spamData: state.spamData,
   customData: state.customData,
-  deletedData: state.deletedData
+  deletedData: state.deletedData,
+  inboxFlaggedData: state.inboxFlaggedData,
+  setFlaggedData: state.setFlaggedData
 });
 
 MenuComponent = connect(

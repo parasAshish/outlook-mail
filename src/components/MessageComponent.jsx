@@ -45,8 +45,14 @@ export class MessageComponent extends Component {
   }
 
   render() {
-    const { wholeData, activeItem } = this.props;
+    let wholeData = [];
+    const { activeItem, setFlaggedData, inboxFlaggedData } = this.props;
     const { selectedMessage } = this.state;
+    if (setFlaggedData) {
+      wholeData = Object.assign(inboxFlaggedData, []);
+    } else {
+      wholeData = Object.assign(this.props.wholeData, []);
+    }
     const listWidget = wholeData.map((dataObject, index) => {
       return (
         <List.Item onClick={(e) => this.handleItemClick(e, dataObject)} key={index} className={dataObject.unread ? 'verticalLine list-divider' : 'list-divider'}>
@@ -96,7 +102,9 @@ const mapStateToProps = (state) => ({
   inboxData: state.inboxData,
   spamData: state.spamData,
   customData: state.customData,
-  deletedData: state.deletedData
+  deletedData: state.deletedData,
+  inboxFlaggedData: state.inboxFlaggedData,
+  setFlaggedData: state.setFlaggedData
 })
 
 MessageComponent = connect(

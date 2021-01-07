@@ -20,9 +20,10 @@ export const getDeletedMessages = (payload) => ({
   payload
 });
 
-export const getInboxFlaggedMessages = (payload, isFlag) => ({
+export const getInboxFlaggedMessages = (actualList, filteredList, isFlag) => ({
   type: GET_INBOX_FLAGGED_MESSAGES,
-  payload,
+  actualList,
+  filteredList,
   isFlag
 });
 

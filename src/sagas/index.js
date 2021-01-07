@@ -1,6 +1,5 @@
 import { put, takeLatest, all, call } from 'redux-saga/effects';
-import { GET_INBOX_MESSAGES, INBOX_RECEIVED, GET_SPAM_MESSAGES, SPAM_RECEIVED, UPDATE_MESSAGE, INBOX, SPAM, FLAG_MESSAGE, UNREAD_MESSAGE, DELETE_MESSAGE, GET_CUSTOM_MESSAGES, CUSTOM_RECEIVED, CUSTOM_FOLDER, GET_DELETED_MESSAGES, DELETED_RECEIVED, GET_INBOX_FLAGGED_MESSAGES } from '../constants/AppConstants';
-import inboxData from '../assets/inbox.json';
+import { FLAGGED_INBOX_RECEIVED, GET_INBOX_MESSAGES, INBOX_RECEIVED, GET_SPAM_MESSAGES, SPAM_RECEIVED, UPDATE_MESSAGE, INBOX, SPAM, FLAG_MESSAGE, UNREAD_MESSAGE, DELETE_MESSAGE, GET_CUSTOM_MESSAGES, CUSTOM_RECEIVED, CUSTOM_FOLDER, GET_DELETED_MESSAGES, DELETED_RECEIVED, GET_INBOX_FLAGGED_MESSAGES } from '../constants/AppConstants';
 
 function* fetchInbox(action) {
   yield put({ type: INBOX_RECEIVED, inboxData: action.payload, });
@@ -63,7 +62,8 @@ function* updateMessage(action) {
 }
 
 function* getFlaggedMessages(action) {
-  yield put({ type: INBOX_RECEIVED, inboxData, });
+  const newData = action.actualList.filter(msgObj => msgObj.isFlag === action.isFlag);
+  yield put({ type: FLAGGED_INBOX_RECEIVED, inboxFlaggedData: newData, });
 }
 
 function* actionWatcher() {
